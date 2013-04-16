@@ -7,16 +7,20 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 
-public class SoulStone extends Block {
+public class OreMalachite extends Block {
 
-    public SoulStone(int id, Material mat) {
+    public OreMalachite(int id, Material mat) {
         super(id, mat);
-        this.setCreativeTab(mod_soulforge.tabSoulForge).setHardness(30.0F).setStepSound(soundStoneFootstep);
+        this.setCreativeTab(mod_soulforge.tabSoulForge).setHardness(15.0F).setStepSound(soundStoneFootstep);
     }
-
+    
+    public int quantityDropped(Random r){
+        return 1;
+    }
+    
     @Override
     public void registerIcons(IconRegister reg){
-        this.blockIcon = reg.registerIcon("soulforge:soulstone");
+        this.blockIcon = reg.registerIcon("soulforge:malachite");
     }
 
 }
