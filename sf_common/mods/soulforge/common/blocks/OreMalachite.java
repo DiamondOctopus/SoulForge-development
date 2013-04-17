@@ -11,16 +11,26 @@ public class OreMalachite extends Block {
 
     public OreMalachite(int id, Material mat) {
         super(id, mat);
-        this.setCreativeTab(mod_soulforge.tabSoulForge).setHardness(15.0F).setStepSound(soundStoneFootstep);
+        this.setCreativeTab(mod_soulforge.tabSoulForge).setHardness(5.0F).setStepSound(soundStoneFootstep);
     }
     
-    public int quantityDropped(Random r){
-        return 1;
+    public int quantityDroppedWithBonus(int par1, Random par2Random)
+    {
+        return this.quantityDropped(par2Random) + par2Random.nextInt(par1 + 1);
+    }
+
+
+    public int quantityDropped(Random par1Random)
+    {
+        return 1 + par1Random.nextInt(2);
     }
     
+    public int idDropped(int par1, Random random, int zero){
+        return mod_soulforge.rawMalachite.itemID;
+    }
     @Override
     public void registerIcons(IconRegister reg){
-        this.blockIcon = reg.registerIcon("soulforge:malachite");
+        this.blockIcon = reg.registerIcon("soulforge:oreMalachite");
     }
 
 }
