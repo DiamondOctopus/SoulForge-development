@@ -137,7 +137,7 @@ public class mod_soulforge {
         ItemStack elemGhastStack = new ItemStack(elemSouls,1,4);
         ItemStack elemBlazeStack = new ItemStack(elemSouls,1,5);
         ItemStack elemEndermanStack = new ItemStack(elemSouls,1,6);
-        ItemStack elemWitherSkeletonStack = new ItemStack(elemSouls,1,7);
+        ItemStack elemSlimeStack = new ItemStack(elemSouls,1,7);
         
         //Outputs
         ItemStack elemCreeperGemStack = new ItemStack(elemSoulGem,1,0);
@@ -147,7 +147,7 @@ public class mod_soulforge {
         ItemStack elemGhastGemStack = new ItemStack(elemSoulGem,1,4);
         ItemStack elemBlazeGemStack = new ItemStack(elemSoulGem,1,5);
         ItemStack elemEndermanGemStack = new ItemStack(elemSoulGem,1,6);
-        ItemStack elemWitherSkeletonGemStack = new ItemStack(elemSoulGem,1,7);
+        ItemStack elemSlimeGemStack = new ItemStack(elemSoulGem,1,7);
         
         //Crafting
         GameRegistry.addShapelessRecipe((elemCreeperGemStack), elemCreeperStack, soulGemLarge);
@@ -157,7 +157,7 @@ public class mod_soulforge {
         GameRegistry.addShapelessRecipe((elemGhastGemStack), elemGhastStack, soulGemLarge);
         GameRegistry.addShapelessRecipe((elemBlazeGemStack), elemBlazeStack, soulGemLarge);
         GameRegistry.addShapelessRecipe((elemEndermanGemStack), elemEndermanStack, soulGemLarge);
-        GameRegistry.addShapelessRecipe((elemWitherSkeletonGemStack), elemWitherSkeletonStack, soulGemLarge);
+        GameRegistry.addShapelessRecipe((elemSlimeGemStack), elemSlimeStack, soulGemLarge);
         
    //Elemental Souls Language Registry
         LanguageRegistry.instance().addStringLocalization("item.elemsouls.elementalcreeper.name", "Elemental Soul - Creeper");
@@ -167,7 +167,7 @@ public class mod_soulforge {
         LanguageRegistry.instance().addStringLocalization("item.elemsouls.elementalghast.name", "Elemental Soul - Ghast");
         LanguageRegistry.instance().addStringLocalization("item.elemsouls.elementalblaze.name", "Elemental Soul - Blaze");
         LanguageRegistry.instance().addStringLocalization("item.elemsouls.elementalenderman.name", "Elemental Soul - Enderman");
-        LanguageRegistry.instance().addStringLocalization("item.elemsouls.elementalwitherskeleton.name", "Elemental Soul - Wither Skeleton");
+        LanguageRegistry.instance().addStringLocalization("item.elemsouls.elementalslime.name", "Elemental Soul - Slime");
         LanguageRegistry.instance().addStringLocalization("item.elemsoulgem.elementalcreepergem.name", "Elemental Soul Gem - Creeper");
         LanguageRegistry.instance().addStringLocalization("item.elemsoulgem.elementalskeletongem.name", "Elemental Soul Gem - Skeleton");
         LanguageRegistry.instance().addStringLocalization("item.elemsoulgem.elementalzombiegem.name", "Elemental Soul Gem - Zombie");
@@ -175,7 +175,7 @@ public class mod_soulforge {
         LanguageRegistry.instance().addStringLocalization("item.elemsoulgem.elementalghastgem.name", "Elemental Soul Gem - Ghast");
         LanguageRegistry.instance().addStringLocalization("item.elemsoulgem.elementalblazegem.name", "Elemental Soul Gem - Blaze");
         LanguageRegistry.instance().addStringLocalization("item.elemsoulgem.elementalendermangem.name", "Elemental Soul Gem - Enderman");
-        LanguageRegistry.instance().addStringLocalization("item.elemsoulgem.elementalwitherskeletongem.name", "Elemental Soul Gem - Wither Skeleton");
+        LanguageRegistry.instance().addStringLocalization("item.elemsoulgem.elementalslimegem.name", "Elemental Soul Gem - Slime");
         
     }
     

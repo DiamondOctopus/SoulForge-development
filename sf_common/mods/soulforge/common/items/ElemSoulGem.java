@@ -14,8 +14,8 @@ import net.minecraft.util.MathHelper;
 
 public class ElemSoulGem extends Item {
     //List of Item Names
-    public static final String[] itemMetaNames = new String [] {"elementalcreepergem", "elementalskeletongem", "elementalzombiegem", "elementalspidergem", "elementalghastgem", "elementalblazegem", "elementalendermangem", "elementalwitherskeletongem"};
-    public static final String[] itemTextures = new String [] {"elemcreepergem", "elemskeletongem", "elemzombiegem", "elemspidergem", "elemghastgem", "elemblazegem", "elemendermangem", "elemwitherskelegem"};
+    public static final String[] itemMetaNames = new String [] {"elementalcreepergem", "elementalskeletongem", "elementalzombiegem", "elementalspidergem", "elementalghastgem", "elementalblazegem", "elementalendermangem", "elementalslimegem"};
+    public static final String[] itemTextures = new String [] {"elemcreepergem", "elemskeletongem", "elemzombiegem", "elemspidergem", "elemghastgem", "elemblazegem", "elemendermangem", "elemslimegem"};
     
     @SideOnly(Side.CLIENT)
     private Icon[] itemTextureSelector;
@@ -42,7 +42,7 @@ public class ElemSoulGem extends Item {
      */
     public String getUnlocalizedName(ItemStack par1ItemStack){
         
-        int i = MathHelper.clamp_int(par1ItemStack.getItemDamage(), 0, 3);
+        int i = MathHelper.clamp_int(par1ItemStack.getItemDamage(), 0, 7);
         return super.getUnlocalizedName() + "." + itemMetaNames[i];
     }
     @SideOnly(Side.CLIENT)
