@@ -34,8 +34,8 @@ public class SoulForgeWorldGen implements IWorldGenerator {
     public void worldGenSurface(World world, Random rand, int chunkX, int chunkZ){
         //to ADD ANOTHER ORE INTO THE WORLD COPY ALL OF THE FOR STATEMENT 
         //AND CHANGE THE mods.soulforge.common.mod_soulforge.<VARIABLE FROM THE BASE CLASS>.blockID 
-        //5 veins in a chunk
-        for(int i = 0; i<5; i++){
+        //10 veins in a chunk
+        for(int i = 0; i<10; i++){
             
             //16 x 16 area up to y= 64
                 
@@ -45,6 +45,19 @@ public class SoulForgeWorldGen implements IWorldGenerator {
                 
             //8 in a vein max
                 (new WorldGenMinable(mod_soulforge.oreMalachite.blockID, 8)).generate(world,  rand, randPosX, randPosY, randPosZ);
+        }
+        
+        // 5 veins per chunk
+        for(int i = 0; i<5; i++){
+            
+            //16 x 16 area up to y= 14
+                
+                int randPosX = chunkX + rand.nextInt(16);
+                int randPosY = rand.nextInt(14);
+                int randPosZ = chunkZ + rand.nextInt(16);
+                
+            //5 in a vein max
+                (new WorldGenMinable(mod_soulforge.oreZircon.blockID, 5)).generate(world,  rand, randPosX, randPosY, randPosZ);
         }
         
     }

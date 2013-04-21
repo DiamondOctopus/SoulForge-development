@@ -1,6 +1,6 @@
-package mods.soulforge.client;
+package mods.soulforge.client.core;
 
-import mods.soulforge.common.CommonProxySoulForge;
+import mods.soulforge.common.core.CommonProxySoulForge;
 
 public class ClientProxySoulForge extends CommonProxySoulForge{
     

@@ -7,10 +7,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 
-public class OreMalachite extends Block {
+public class OreZircon extends Block {
 
-    public OreMalachite(int id, Material mat) {
-        super(id, mat);
+    public OreZircon(int par1, Material par2Material) {
+        super(par1, par2Material);
         this.setCreativeTab(mod_soulforge.tabSoulForge).setHardness(5.0F).setStepSound(soundStoneFootstep);
     }
     
@@ -18,20 +18,18 @@ public class OreMalachite extends Block {
     {
         return this.quantityDropped(par2Random) + par2Random.nextInt(par1 + 1);
     }
-
-
     public int quantityDropped(Random par1Random)
     {
-        return 2 + par1Random.nextInt(2);
+        return 1;
     }
     
     public int idDropped(int par1, Random random, int zero){
-        return mod_soulforge.rawMalachite.itemID;
+        return mod_soulforge.zirconGem.itemID;
     }
     
     @Override
     public void registerIcons(IconRegister reg){
-        this.blockIcon = reg.registerIcon("soulforge:oreMalachite");
+        this.blockIcon = reg.registerIcon("soulforge:oreZircon");
     }
 
 }
