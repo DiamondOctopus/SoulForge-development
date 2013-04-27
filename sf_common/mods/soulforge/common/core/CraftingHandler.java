@@ -16,13 +16,20 @@ public class CraftingHandler implements ICraftingHandler {
             {
                 ItemStack j = craftMatrix.getStackInSlot(i); //Gets the item
                     
-                if(j.getItem() != null && j.getItem() == mod_soulforge.zirconChisel){ //If it's a firestone
+                if(j.getItem() != null && j.getItem() == mod_soulforge.zirconChisel){ //If it's a zircon chisel
                  ItemStack k = new ItemStack(mod_soulforge.zirconChisel, 2, (j.getItemDamage() + 1)); //Makes a new itemstack that's been damaged and has 2 items
                  if(k.getItemDamage() >= k.getMaxDamage()){ //If it is destroyed
                  k.stackSize--; //Removes the added item
                  }
                  craftMatrix.setInventorySlotContents(i, k); //Sets the slot to the new item
-        }
+                }
+                if(j.getItem() != null && j.getItem() == mod_soulforge.runicDiamondChisel){ //If it's a runic diamond chisel
+                    ItemStack k = new ItemStack(mod_soulforge.runicDiamondChisel, 2, (j.getItemDamage() + 1)); //Makes a new itemstack that's been damaged and has 2 items
+                    if(k.getItemDamage() >= k.getMaxDamage()){ //If it is destroyed
+                    k.stackSize--; //Removes the added item
+                    }
+                    craftMatrix.setInventorySlotContents(i, k); //Sets the slot to the new item
+                   }
             }
         }
         }

@@ -14,8 +14,8 @@ import net.minecraft.util.MathHelper;
 
 public class RuneStones extends Item {
     //List of Item Names
-    public static final String[] itemMetaNames = new String [] {"blankrune", "wardrune", "wardruneii", "vigilantrune", "vigilantruneii", "toolrune", "bindingrune", "toolruneii"};
-    public static final String[] itemTextures = new String [] {"runeBlank", "runeWard", "runeWard2", "runeVigilant", "runeVigilant2", "runeTool", "runeBinding", "runeTool2"};
+    public static final String[] itemMetaNames = new String [] {"blankrune", "wardrune", "wardruneii", "vigilantrune", "vigilantruneii", "toolrune", "bindingrune", "toolruneii", "armorrune", "armorruneii"};
+    public static final String[] itemTextures = new String [] {"runeBlank", "runeWard", "runeWard2", "runeVigilant", "runeVigilant2", "runeTool", "runeBinding", "runeTool2", "runeArmor", "runeArmor2"};
 
     @SideOnly(Side.CLIENT)
     private Icon[] itemTextureSelector;
@@ -32,7 +32,7 @@ public class RuneStones extends Item {
              */
     public Icon getIconFromDamage(int par1){
         
-             int j = MathHelper.clamp_int(par1, 0, 7);
+             int j = MathHelper.clamp_int(par1, 0, 9);
              return this.itemTextureSelector[j];
     }
     /**
@@ -41,7 +41,7 @@ public class RuneStones extends Item {
      */
     public String getUnlocalizedName(ItemStack par1ItemStack){
         
-        int i = MathHelper.clamp_int(par1ItemStack.getItemDamage(), 0, 7);
+        int i = MathHelper.clamp_int(par1ItemStack.getItemDamage(), 0, 9);
         return super.getUnlocalizedName() + "." + itemMetaNames[i];
     }
     @SideOnly(Side.CLIENT)
@@ -50,7 +50,7 @@ public class RuneStones extends Item {
              * returns a list of items with the same ID, but different meta (eg: dye returns 16 items)
              */
     public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List){
-             for (int j = 0; j < 8; ++j){
+             for (int j = 0; j < 10; ++j){
                      par3List.add(new ItemStack(par1, 1, j));
              }
     }

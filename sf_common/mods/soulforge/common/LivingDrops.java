@@ -27,10 +27,16 @@ public class LivingDrops {
             
             if (event.entityLiving instanceof EntityCreeper) {
                 // 5 per cent chance of drop
-                if (rand <1.00d) {
+                if (rand <0.05d) {
                     
                     event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.elemSouls, 1, 0), 0.0F);
                 
+                }
+                //15 percent chance
+                if (rand <0.15d) {
+                    
+                    event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.lowSoul, 1), 1);
+                    
                 }
             }
             if (event.entityLiving instanceof EntitySkeleton) {
@@ -40,6 +46,11 @@ public class LivingDrops {
                     event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.elemSouls, 1, 1), 0.0F);
                 
                 }
+                if (rand <0.15d) {
+                    
+                    event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.lowSoul, 1), 1);
+                    
+                }
             }
             if (event.entityLiving instanceof EntityZombie) {
                 // 5 per cent chance of drop
@@ -47,6 +58,11 @@ public class LivingDrops {
                     
                     event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.elemSouls, 1, 2), 0.0F);
                 
+                }
+                if (rand <0.15d) {
+                    
+                    event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.lowSoul, 1), 1);
+                    
                 }
             }
             if (event.entityLiving instanceof EntitySpider) {
@@ -56,6 +72,11 @@ public class LivingDrops {
                     event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.elemSouls, 1, 3), 0.0F);
                 
                 }
+                if (rand <0.15d) {
+                    
+                    event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.lowSoul, 1), 1);
+                    
+                }
             }
             if (event.entityLiving instanceof EntityGhast) {
                 // 5 per cent chance of drop
@@ -63,6 +84,11 @@ public class LivingDrops {
                     
                     event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.elemSouls, 1, 4), 0.0F);
                 
+                }
+                if (rand <0.15d) {
+                    
+                    event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.lowSoul, 1), 1);
+                    
                 }
             }
             if (event.entityLiving instanceof EntityBlaze) {
@@ -72,6 +98,11 @@ public class LivingDrops {
                     event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.elemSouls, 1, 5), 0.0F);
                 
                 }
+                if (rand <0.15d) {
+                    
+                    event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.lowSoul, 1), 1);
+                    
+                }
             }
             if (event.entityLiving instanceof EntityEnderman) {
                 // 5 per cent chance of drop
@@ -80,6 +111,11 @@ public class LivingDrops {
                     event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.elemSouls, 1, 6), 0.0F);
                 
                 }
+                if (rand <0.15d) {
+                    
+                    event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.lowSoul, 1), 1);
+                    
+                }
             }
             if (event.entityLiving instanceof EntitySlime) {
                 // 5 per cent chance of drop
@@ -87,6 +123,11 @@ public class LivingDrops {
                     
                     event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.elemSouls, 1, 7), 0.0F);
                 
+                }
+                if (rand <0.15d) {
+                    
+                    event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.lowSoul, 1), 1);
+                    
                 }
             }
             

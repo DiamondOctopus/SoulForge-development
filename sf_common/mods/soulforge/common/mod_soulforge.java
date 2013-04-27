@@ -3,6 +3,7 @@ package mods.soulforge.common;
 import mods.soulforge.common.blocks.*;
 import mods.soulforge.common.core.*;
 import mods.soulforge.client.core.*;
+import mods.soulforge.common.handlers.GuiHandler;
 import mods.soulforge.common.items.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -15,11 +16,13 @@ import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
+import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Mod.PreInit;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -27,6 +30,10 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 
 public class mod_soulforge {
+    
+    @Instance
+    public static mod_soulforge instance = new mod_soulforge();
+    private GuiHandler guihandler = new GuiHandler();
     
     @SidedProxy(clientSide = "mods.soulforge.client.core.ClientProxySoulForge", serverSide = "CommonProxySoulForge")
     public static CommonProxySoulForge proxy;
@@ -58,51 +65,128 @@ public class mod_soulforge {
             itemRunicDiamondChiselID = config.getItem("Runic Diamond Chisel", 16613).getInt();
             itemMagicToolID = config.getItem("Magical Tool Handle", 16614).getInt();
             itemZirconShardID = config.getItem("Zircon Shard", 16615).getInt();
+            itemSFSteelID = config.getItem("SoulForged Steel", 16616).getInt();
+            itemRunicSteelID = config.getItem("Runic Steel", 16617).getInt();
+            itemLowSoulID = config.getItem("Low Soul", 16618).getInt();
+            itemMagicZirconID = config.getItem("Magic Zircon", 16619).getInt();
+            itemMagicZirconEmptyID = config.getItem("Empty Magic Zirconium", 16620).getInt();
+            itemMagicEssenceID = config.getItem("Magic Essence", 16621).getInt();
             
             // Tool ID's
-            swordCreeperID = config.getItem("Elemental Sword - Creeper",16700).getInt();
+            swordCreeperID = config.getItem("Elemental Sword - Creeper", 16700).getInt();
+            swordEndermanID = config.getItem("Elemental Sword - Enderman", 16701).getInt();
             
             // Block ID's
             blockSoulStoneID = config.getBlock("Soul Stone", 600).getInt();
             blockOreMalachiteID = config.getBlock("Malachite Ore", 601).getInt();
             blockOreZirconID = config.getBlock("Zircon Ore", 602).getInt();
             
+            //Machineees
+            soulInfuserIdleID = config.getBlock("Soul Infuser Idle", 603).getInt();
+            soulInfuserActiveID = config.getBlock("Soul Infuser Active", 604).getInt();
+            
             config.save();
 
         }
+    
+    public static final int soulInfuserGUIID = 0;
         
+    //Machines
+    public static Block soulInfuserIdle;
+    public static int soulInfuserIdleID;
+    public static Block soulInfuserActive;
+    public static int soulInfuserActiveID;
+    
     
     // Items
     public static Item rawMalachite;
+    public static int itemMalachiteID;
+    
     public static Item refMalachite;
+    public static int itemRefMalachiteID;
+    
     public static Item soulGemLow;
+    public static int itemSoulGemLowID;
+    
     public static Item soulGemMed;
+    public static int itemSoulGemMedID;
+    
     public static Item soulGemLarge;
+    public static int itemSoulGemLargeID;
+    
     public static Item elemSouls;
+    public static int itemElemSoulsID;
+    
     public static Item elemSoulGem;
+    public static int itemElemSoulGemID;
+    
     public static Item diamondShard;
+    public static int itemDiamondShardID;
+    
     public static Item magicDiamond;
+    public static int itemMagicDiamondID;
+    
     public static Item magicDiamondEmpty;
+    public static int itemMagicDiamondEmptyID;
+    
     public static Item runeStones;
+    public static int itemRuneStonesID;
+    
     public static Item zirconChisel;
+    public static int itemZirconID;
+    
     public static Item zirconGem;
+    public static int itemZirconChiselID;
+    
     public static Item runicDiamondChisel;
+    public static int itemRunicDiamondChiselID;
+    
     public static Item magicTool;
+    public static int itemMagicToolID;
+    
     public static Item zirconShard;
+    public static int itemZirconShardID;
+    
+    public static Item soulForgedSteel;
+    public static int itemSFSteelID;
+    
+    public static Item runicSteel;
+    public static int itemRunicSteelID;
+    
+    public static Item lowSoul;
+    public static int itemLowSoulID;
+    
+    public static Item magicZircon;
+    public static int itemMagicZirconID;
+    
+    public static Item magicZirconEmpty;
+    public static int itemMagicZirconEmptyID;
+    
+    public static Item magicEssence;
+    public static int itemMagicEssenceID;
     
     // Tools
     public static Item swordCreeper;
+    public static int swordCreeperID;
+    
+    public static Item swordEnderman;
+    public static int swordEndermanID;
     
     // Blocks
     public static Block soulStone;
+    public static int blockSoulStoneID;
+    
     public static Block oreMalachite;
+    public static int blockOreMalachiteID;
+    
     public static Block oreZircon;
+    public static int blockOreZirconID;
     
     // start enum tool material
     
-    public static EnumToolMaterial toolElementalBase = EnumHelper.addToolMaterial("ELEMENTALBASE", 3, 1561, 8.0F, 3, 15);
-    public static EnumToolMaterial toolElementalHigh = EnumHelper.addToolMaterial("ELEMENTALHIGH", 3, 2056, 10.0F, 4, 22);
-    public static EnumToolMaterial toolElementalBest = EnumHelper.addToolMaterial("ELEMENTALBEST", 3, 2568, 12.0F, 5, 30);
+    public static EnumToolMaterial toolElementalBase = EnumHelper.addToolMaterial("ELEMENTALBASE", 3, 1561, 8.0F, 5, 18);
+    public static EnumToolMaterial toolElementalHigh = EnumHelper.addToolMaterial("ELEMENTALHIGH", 3, 2056, 10.0F, 6, 25);
+    public static EnumToolMaterial toolElementalBest = EnumHelper.addToolMaterial("ELEMENTALBEST", 3, 2568, 12.0F, 7, 32);
     
     @Init
     public void load(FMLInitializationEvent event) {
@@ -123,8 +207,11 @@ public class mod_soulforge {
         runicDiamondChisel = new RunicDiamondChisel(itemRunicDiamondChiselID).setUnlocalizedName("toolrunicdiamondchisel");
         gameItemRegisters(runicDiamondChisel, "runicdiamondchisel", "Runic Diamond Chisel");
         
-        swordCreeper = new SwordCreeper(swordCreeperID,toolElementalHigh).setUnlocalizedName("swordcreeper");
+        swordCreeper = new SwordCreeper(swordCreeperID, toolElementalHigh).setUnlocalizedName("swordcreeper");
         gameItemRegisters(swordCreeper, "creepersword", "Elemental Sword - Creeper");
+        
+        swordEnderman = new SwordEnderman(swordEndermanID, toolElementalBest).setUnlocalizedName("sworenderman");
+        gameItemRegisters(swordEnderman, "endermansword", "Elemental Sword - Enderman");
         
  
     //Items
@@ -172,6 +259,24 @@ public class mod_soulforge {
         magicDiamondEmpty = new MagicDiamondEmpty(itemMagicDiamondEmptyID).setUnlocalizedName("tilemagicaldiamondempty");
         gameItemRegisters(magicDiamondEmpty, "magicaldiamondempty", "Magic Diamond - Empty");
         
+        soulForgedSteel = new SFsteel(itemSFSteelID).setUnlocalizedName("tilesfsteel");
+        gameItemRegisters(soulForgedSteel, "sfsteel", "Soulforged Steel");
+        
+        runicSteel = new RunicSteel(itemRunicSteelID).setUnlocalizedName("tilerunicsteel");
+        gameItemRegisters(runicSteel, "runicsteel", "Runic Soulforged Steel");
+        
+        lowSoul = new SoulLow(itemLowSoulID).setUnlocalizedName("tilelowsoul");
+        gameItemRegisters(lowSoul, "lowsoul", "Lesser Soul");
+        
+        magicZircon = new MagicZircon(itemMagicZirconID).setUnlocalizedName("tilemagicalzircon");
+        gameItemRegisters(magicZircon, "magicalzircon", "Magically Infused Zirconium");
+        
+        magicZirconEmpty = new MagicZirconEmpty(itemMagicZirconEmptyID).setUnlocalizedName("tilemagicalzirconempty");
+        gameItemRegisters(magicZirconEmpty, "magicalzirconempty", "Magic Zirconium - Empty");
+        
+        magicEssence = new MagicEssence(itemMagicEssenceID).setUnlocalizedName("tilemagicessence");
+        gameItemRegisters(magicEssence, "magicessence", "Magic Essence");
+        
     //Blocks
         //Soul Stone
         soulStone = new SoulStone(blockSoulStoneID, Material.rock).setUnlocalizedName("tilesoulstone");
@@ -185,6 +290,17 @@ public class mod_soulforge {
         oreZircon = new OreZircon(blockOreZirconID, Material.rock).setUnlocalizedName("tileorezircon");
         gameBlockRegisters(oreZircon, "zirconore", "Zirconium Ore");
         MinecraftForge.setBlockHarvestLevel(oreZircon, "pickaxe", 2);
+        
+        //Machines
+        //Soul Infuser
+        soulInfuserIdle = new SoulInfuser(soulInfuserIdleID, false).setHardness(3.5F).setUnlocalizedName("tilesoulinfuseridel").setCreativeTab(tabSoulForge);
+        soulInfuserActive = new SoulInfuser(soulInfuserActiveID, false).setHardness(3.5F).setUnlocalizedName("tilesoulinfuseractive");
+        gameBlockRegisters(soulInfuserActive, "soulinfuseractive", "SoulInfuserON");
+        gameBlockRegisters(soulInfuserIdle, "soulinfuseridle", "Soul Infuser");
+        GameRegistry.registerTileEntity(TileEntitySoulInfuser.class, "tileentitysoulinfuser");
+        
+        
+        NetworkRegistry.instance().registerGuiHandler(this, guihandler);
      
    //Elemental Souls Language Registry
         LanguageRegistry.instance().addStringLocalization("item.elemsouls.elementalcreeper.name", "Elemental Soul - Creeper");
@@ -212,6 +328,8 @@ public class mod_soulforge {
         LanguageRegistry.instance().addStringLocalization("item.runestones.toolrune.name", "Tool Runestone I");
         LanguageRegistry.instance().addStringLocalization("item.runestones.bindingrune.name", "Binding Runestone");
         LanguageRegistry.instance().addStringLocalization("item.runestones.toolruneii.name", "Tool Runestone II");
+        LanguageRegistry.instance().addStringLocalization("item.runestones.armorrune.name", "Armor Runestone");
+        LanguageRegistry.instance().addStringLocalization("item.runestones.armorruneii.name", "Armor Runestone II");
         
         proxy.addRecipes();
     }
@@ -224,31 +342,5 @@ public class mod_soulforge {
         GameRegistry.registerItem(i,e);
         LanguageRegistry.addName(i,f);
     }
-    
-    //Variable Definitions
-        //Items
-    public static int itemMalachiteID;
-    public static int itemRefMalachiteID;
-    public static int itemSoulGemLowID;
-    public static int itemSoulGemMedID;
-    public static int itemSoulGemLargeID;
-    public static int itemElemSoulsID;
-    public static int itemElemSoulGemID;
-    public static int itemDiamondShardID;
-    public static int itemMagicDiamondID;
-    public static int itemMagicDiamondEmptyID;
-    public static int itemRuneStonesID;
-    public static int itemZirconID;
-    public static int itemZirconChiselID;
-    public static int itemRunicDiamondChiselID;
-    public static int itemMagicToolID;
-    public static int itemZirconShardID;
 
-        //Tools
-    public static int swordCreeperID;
-    
-        //Blocks
-    public static int blockSoulStoneID;
-    public static int blockOreMalachiteID;
-    public static int blockOreZirconID;
 }
