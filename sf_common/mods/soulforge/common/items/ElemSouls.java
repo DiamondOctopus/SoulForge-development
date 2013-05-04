@@ -63,4 +63,7 @@ public class ElemSouls extends Item {
                      this.itemTextureSelector[i] = par1IconRegister.registerIcon("soulforge:" + itemTextures[i]);
              }
     }
+    public boolean hasEffect(ItemStack is){
+        return true;
+    }
 }

@@ -56,8 +56,9 @@ public class RecipesSoulInfuser
         ItemStack magicDiamondStack = new ItemStack(mod_soulforge.magicDiamond);
         ItemStack magicZirconStack = new ItemStack(mod_soulforge.magicZircon);
         ItemStack magicEssenceStack = new ItemStack(mod_soulforge.magicEssence);
+        ItemStack soulGemFilledStack = new ItemStack(mod_soulforge.soulGemFilled);
        //  this.addSmelting(thingtobesmelted, thingtorecieve, exp);
-        this.addSmelting(mod_soulforge.lowSoul.itemID, new ItemStack(Block.sand), 0.7F);
+        this.addSmelting(mod_soulforge.lowSoul.itemID, soulGemFilledStack, 0.7F);
         this.addSmelting(mod_soulforge.elemSouls.itemID, 0, elemCreeperGemStack, 0.7F);
         this.addSmelting(mod_soulforge.elemSouls.itemID, 1, elemSkeletonGemStack, 0.7F);
         this.addSmelting(mod_soulforge.elemSouls.itemID, 2, elemZombieGemStack, 0.7F);

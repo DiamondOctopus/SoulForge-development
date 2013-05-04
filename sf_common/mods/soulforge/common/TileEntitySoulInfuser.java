@@ -221,7 +221,7 @@ public class TileEntitySoulInfuser extends TileEntity implements ISidedInventory
      */
     public int getInventoryStackLimit()
     {
-        return 1;
+        return 64;
     }
 
     @SideOnly(Side.CLIENT)

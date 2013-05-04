@@ -32,12 +32,7 @@ public class LivingDrops {
                     event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.elemSouls, 1, 0), 0.0F);
                 
                 }
-                //15 percent chance
-                if (rand <0.15d) {
-                    
-                    event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.lowSoul, 1), 1);
-                    
-                }
+
             }
             if (event.entityLiving instanceof EntitySkeleton) {
                 // 5 per cent chance of drop
@@ -45,11 +40,6 @@ public class LivingDrops {
                     
                     event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.elemSouls, 1, 1), 0.0F);
                 
-                }
-                if (rand <0.15d) {
-                    
-                    event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.lowSoul, 1), 1);
-                    
                 }
             }
             if (event.entityLiving instanceof EntityZombie) {
@@ -59,11 +49,6 @@ public class LivingDrops {
                     event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.elemSouls, 1, 2), 0.0F);
                 
                 }
-                if (rand <0.15d) {
-                    
-                    event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.lowSoul, 1), 1);
-                    
-                }
             }
             if (event.entityLiving instanceof EntitySpider) {
                 // 5 per cent chance of drop
@@ -71,11 +56,6 @@ public class LivingDrops {
                     
                     event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.elemSouls, 1, 3), 0.0F);
                 
-                }
-                if (rand <0.15d) {
-                    
-                    event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.lowSoul, 1), 1);
-                    
                 }
             }
             if (event.entityLiving instanceof EntityGhast) {
@@ -85,11 +65,6 @@ public class LivingDrops {
                     event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.elemSouls, 1, 4), 0.0F);
                 
                 }
-                if (rand <0.15d) {
-                    
-                    event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.lowSoul, 1), 1);
-                    
-                }
             }
             if (event.entityLiving instanceof EntityBlaze) {
                 // 5 per cent chance of drop
@@ -97,11 +72,6 @@ public class LivingDrops {
                     
                     event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.elemSouls, 1, 5), 0.0F);
                 
-                }
-                if (rand <0.15d) {
-                    
-                    event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.lowSoul, 1), 1);
-                    
                 }
             }
             if (event.entityLiving instanceof EntityEnderman) {
@@ -111,11 +81,6 @@ public class LivingDrops {
                     event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.elemSouls, 1, 6), 0.0F);
                 
                 }
-                if (rand <0.15d) {
-                    
-                    event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.lowSoul, 1), 1);
-                    
-                }
             }
             if (event.entityLiving instanceof EntitySlime) {
                 // 5 per cent chance of drop
@@ -124,11 +89,13 @@ public class LivingDrops {
                     event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.elemSouls, 1, 7), 0.0F);
                 
                 }
-                if (rand <0.15d) {
-                    
-                    event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.lowSoul, 1), 1);
-                    
-                }
+
+            }
+            //15 percent chance
+            if (rand <0.15d) {
+                
+                event.entityLiving.entityDropItem(new ItemStack(mod_soulforge.lowSoul, 1), 1);
+                
             }
             
         }

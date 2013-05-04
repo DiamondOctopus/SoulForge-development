@@ -3,10 +3,12 @@ package mods.soulforge.common;
 import mods.soulforge.common.blocks.*;
 import mods.soulforge.common.core.*;
 import mods.soulforge.client.core.*;
+import mods.soulforge.common.handlers.CraftingHandler;
 import mods.soulforge.common.handlers.GuiHandler;
 import mods.soulforge.common.items.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
@@ -71,10 +73,17 @@ public class mod_soulforge {
             itemMagicZirconID = config.getItem("Magic Zircon", 16619).getInt();
             itemMagicZirconEmptyID = config.getItem("Empty Magic Zirconium", 16620).getInt();
             itemMagicEssenceID = config.getItem("Magic Essence", 16621).getInt();
+            itemSoulGemFilledID = config.getItem("Filled Medium Soul Gem", 16621).getInt();
             
             // Tool ID's
             swordCreeperID = config.getItem("Elemental Sword - Creeper", 16700).getInt();
-            swordEndermanID = config.getItem("Elemental Sword - Enderman", 16701).getInt();
+            swordZombieID = config.getItem("Elemental Sword - Zombie", 16701).getInt();
+            swordSkeletonID = config.getItem("Elemental Sword - Skeleton", 16702).getInt();
+            swordSpiderID = config.getItem("Elemental Sword - Spider", 16703).getInt();
+            swordGhastID = config.getItem("Elemental Sword - Ghast", 16704).getInt();
+            swordBlazeID = config.getItem("Elemental Sword - Blaze", 16705).getInt();
+            swordEndermanID = config.getItem("Elemental Sword - Enderman", 16706).getInt();
+            swordSlimeID = config.getItem("Elemental Sword - Slime", 16707).getInt();
             
             // Block ID's
             blockSoulStoneID = config.getBlock("Soul Stone", 600).getInt();
@@ -84,18 +93,26 @@ public class mod_soulforge {
             //Machineees
             soulInfuserIdleID = config.getBlock("Soul Infuser Idle", 603).getInt();
             soulInfuserActiveID = config.getBlock("Soul Infuser Active", 604).getInt();
+            soulForgeID = config.getBlock("Soul Forge", 605).getInt();
+            soulForge2ID = config.getBlock("Soul Forge Mk II", 606).getInt();
             
             config.save();
 
         }
     
     public static final int soulInfuserGUIID = 0;
+    public static final int soulForgeGUIID = 1;
+    public static final int soulForge2GUIID = 2;
         
     //Machines
     public static Block soulInfuserIdle;
     public static int soulInfuserIdleID;
     public static Block soulInfuserActive;
     public static int soulInfuserActiveID;
+    public static Block soulForge;
+    public static int soulForgeID;
+    public static Block soulForge2;
+    public static int soulForge2ID;
     
     
     // Items
@@ -165,12 +182,18 @@ public class mod_soulforge {
     public static Item magicEssence;
     public static int itemMagicEssenceID;
     
-    // Tools
-    public static Item swordCreeper;
-    public static int swordCreeperID;
+    public static Item soulGemFilled;
+    public static int itemSoulGemFilledID;
     
-    public static Item swordEnderman;
-    public static int swordEndermanID;
+    // Tools
+    public static Item swordCreeper; public static int swordCreeperID;
+    public static Item swordSkeleton; public static int swordSkeletonID;
+    public static Item swordZombie; public static int swordZombieID;
+    public static Item swordSpider; public static int swordSpiderID;
+    public static Item swordGhast; public static int swordGhastID;
+    public static Item swordBlaze; public static int swordBlazeID;
+    public static Item swordEnderman; public static int swordEndermanID;
+    public static Item swordSlime; public static int swordSlimeID;
     
     // Blocks
     public static Block soulStone;
@@ -207,11 +230,29 @@ public class mod_soulforge {
         runicDiamondChisel = new RunicDiamondChisel(itemRunicDiamondChiselID).setUnlocalizedName("toolrunicdiamondchisel");
         gameItemRegisters(runicDiamondChisel, "runicdiamondchisel", "Runic Diamond Chisel");
         
-        swordCreeper = new SwordCreeper(swordCreeperID, toolElementalHigh).setUnlocalizedName("swordcreeper");
+        swordCreeper = new SwordCreeper(swordCreeperID, toolElementalBase).setUnlocalizedName("swordcreeper");
         gameItemRegisters(swordCreeper, "creepersword", "Elemental Sword - Creeper");
+        
+        swordZombie = new SwordZombie(swordZombieID, toolElementalHigh).setUnlocalizedName("swordzombie");
+        gameItemRegisters(swordZombie, "zombiesword", "Elemental Sword - Zombie");
+        
+        swordSkeleton = new SwordSkeleton(swordSkeletonID, toolElementalHigh).setUnlocalizedName("swordskeleton");
+        gameItemRegisters(swordSkeleton, "skeletonsword", "Elemental Sword - Skeleton");
+        
+        swordSpider = new SwordSpider(swordSpiderID, toolElementalBase).setUnlocalizedName("swordspider");
+        gameItemRegisters(swordSpider, "spidersword", "Elemental Sword - Spider");
+        
+        swordGhast = new SwordGhast(swordGhastID, toolElementalHigh).setUnlocalizedName("swordghast");
+        gameItemRegisters(swordGhast, "ghastsword", "Elemental Sword - Ghast");
+        
+        swordBlaze = new SwordBlaze(swordBlazeID, toolElementalHigh).setUnlocalizedName("swordblaze");
+        gameItemRegisters(swordBlaze, "blazesword", "Elemental Sword - Blaze");
         
         swordEnderman = new SwordEnderman(swordEndermanID, toolElementalBest).setUnlocalizedName("sworenderman");
         gameItemRegisters(swordEnderman, "endermansword", "Elemental Sword - Enderman");
+        
+        swordSlime = new SwordSlime(swordSlimeID, toolElementalBase).setUnlocalizedName("swordslime");
+        gameItemRegisters(swordSlime, "slimesword", "Elemental Sword - Slime");
         
  
     //Items
@@ -277,6 +318,9 @@ public class mod_soulforge {
         magicEssence = new MagicEssence(itemMagicEssenceID).setUnlocalizedName("tilemagicessence");
         gameItemRegisters(magicEssence, "magicessence", "Magic Essence");
         
+        soulGemFilled = new SoulGemMedFilled(itemSoulGemFilledID).setUnlocalizedName("tilesoulgemfilled");
+        gameItemRegisters(soulGemFilled, "soulgemfilled", "Medium Soul Gem - Filled");
+        
     //Blocks
         //Soul Stone
         soulStone = new SoulStone(blockSoulStoneID, Material.rock).setUnlocalizedName("tilesoulstone");
@@ -294,10 +338,15 @@ public class mod_soulforge {
         //Machines
         //Soul Infuser
         soulInfuserIdle = new SoulInfuser(soulInfuserIdleID, false).setHardness(3.5F).setUnlocalizedName("tilesoulinfuseridel").setCreativeTab(tabSoulForge);
-        soulInfuserActive = new SoulInfuser(soulInfuserActiveID, false).setHardness(3.5F).setUnlocalizedName("tilesoulinfuseractive");
+        soulInfuserActive = new SoulInfuser(soulInfuserActiveID, true).setHardness(3.5F).setUnlocalizedName("tilesoulinfuseractive");
         gameBlockRegisters(soulInfuserActive, "soulinfuseractive", "SoulInfuserON");
         gameBlockRegisters(soulInfuserIdle, "soulinfuseridle", "Soul Infuser");
         GameRegistry.registerTileEntity(TileEntitySoulInfuser.class, "tileentitysoulinfuser");
+        //Soul Forge
+        soulForge = new BlockSoulForge(soulForgeID).setHardness(3.5F).setUnlocalizedName("tilesoulforge");
+        gameBlockRegisters(soulForge, "blocksoulforge", "Soul Forge");
+        soulForge2 = new SoulForge2(soulForge2ID).setHardness(3.5F).setUnlocalizedName("tilesoulforge2").setCreativeTab(tabSoulForge);
+        gameBlockRegisters(soulForge2, "soulforge2", "Soul Forge Mk. II");
         
         
         NetworkRegistry.instance().registerGuiHandler(this, guihandler);

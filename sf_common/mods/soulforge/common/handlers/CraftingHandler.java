@@ -1,4 +1,4 @@
-package mods.soulforge.common.core;
+package mods.soulforge.common.handlers;
 
 import mods.soulforge.common.mod_soulforge;
 import net.minecraft.entity.player.EntityPlayer;

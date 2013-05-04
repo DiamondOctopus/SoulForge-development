@@ -46,11 +46,12 @@ public class CommonProxySoulForge implements IGuiHandler  {
         ItemStack zirconShardStack = new ItemStack(mod_soulforge.zirconShard, 4);
         ItemStack magicDiamondStack = new ItemStack(mod_soulforge.magicDiamond);
         ItemStack magicDiamondEmptyStack = new ItemStack(mod_soulforge.magicDiamondEmpty);
+        ItemStack magicToolCraftStack = new ItemStack(mod_soulforge.magicTool, 2);
         ItemStack magicToolStack = new ItemStack(mod_soulforge.magicTool);
         ItemStack runicSteelStack = new ItemStack(mod_soulforge.runicSteel);
         ItemStack magicZirconStack = new ItemStack(mod_soulforge.magicZircon);
         ItemStack magicZirconEmptyStack = new ItemStack(mod_soulforge.magicZirconEmpty);
-        ItemStack soulInfuser = new ItemStack(mod_soulforge.soulInfuserIdle);
+        ItemStack soulForgeStack = new ItemStack(mod_soulforge.soulForge);
         //RuneStones
         ItemStack zirconChiselCraftStack = new ItemStack(mod_soulforge.zirconChisel,1,-1);
         ItemStack zirconChiselStack = new ItemStack(mod_soulforge.zirconChisel,1,WILDCARD_VALUE);
@@ -95,11 +96,11 @@ public class CommonProxySoulForge implements IGuiHandler  {
         GameRegistry.addRecipe(magicZirconEmptyStack, new Object[] {"xxx", "x#x", "xxx", 'x', mod_soulforge.zirconShard, '#', runeStoneBindingStack});
         GameRegistry.addRecipe(zirconChiselCraftStack, new Object[] {" x", "# ", '#', mod_soulforge.zirconGem, 'x', Item.stick});
         GameRegistry.addRecipe(zirconChiselCraftStack, new Object[] {"x ", " #", '#', mod_soulforge.zirconGem, 'x', Item.stick});
-        GameRegistry.addRecipe(magicToolStack, new Object[] {"x#x", "xyx", "x#x", 'x', mod_soulforge.refMalachite, '#', Item.blazeRod, 'y', runeStoneToolStack});
+        GameRegistry.addRecipe(magicToolCraftStack, new Object[] {"x#x", "xyx", "x#x", 'x', mod_soulforge.refMalachite, '#', Item.blazeRod, 'y', runeStoneToolStack});
         GameRegistry.addRecipe(diamondChiselCraftStack, new Object[] {" x", "# ", '#', mod_soulforge.magicDiamond, 'x', mod_soulforge.magicTool});
         GameRegistry.addRecipe(diamondChiselCraftStack, new Object[] {"x ", " #", '#', mod_soulforge.magicDiamond, 'x', mod_soulforge.magicTool});
-        GameRegistry.addRecipe(soulInfuser, new Object[] {"x#x", "mel", "ofo", 'x', mod_soulforge.refMalachite, '#', Block.blockSteel, 'm', soulGemMedStack, 'e', Block.enchantmentTable, 'l', soulGemLargeStack, 'o', Block.obsidian, 'f', Block.furnaceIdle});
-        GameRegistry.addRecipe(soulInfuser, new Object[] {"x#x", "lem", "ofo", 'x', mod_soulforge.refMalachite, '#', Block.blockSteel, 'm', soulGemMedStack, 'e', Block.enchantmentTable, 'l', soulGemLargeStack, 'o', Block.obsidian, 'f', Block.furnaceIdle});
+        GameRegistry.addRecipe(soulForgeStack, new Object[] {"xxx", "yzw", "x#x", 'x', Block.stoneBrick, 'y', runeStoneToolStack, 'w', runeStoneArmorStack, 'z', Block.anvil, '#', soulGemLargeStack});
+        GameRegistry.addRecipe(soulForgeStack, new Object[] {"xxx", "yzw", "x#x", 'x', Block.stoneBrick, 'w', runeStoneToolStack, 'y', runeStoneArmorStack, 'z', Block.anvil, '#', soulGemLargeStack});
         
         //Soulgems
         GameRegistry.addRecipe(soulGemMedStack, new Object[] {"xxx", "x#x", "xxx", 'x', mod_soulforge.refMalachite, '#', Item.blazePowder});
@@ -114,6 +115,7 @@ public class CommonProxySoulForge implements IGuiHandler  {
         GameRegistry.addRecipe(runeStoneBindingStack, new Object[] {"x#", 'x', runeStoneWardStack, '#', zirconChiselStack}); GameRegistry.addRecipe(runeStoneBindingStack, new Object[] {"x#", 'x', runeStoneWardStack, '#', diamondChiselStack});
         GameRegistry.addRecipe(runeStoneVigilantStack, new Object [] {"#", "x", 'x', runeStoneWardStack, '#', zirconChiselStack}); GameRegistry.addRecipe(runeStoneVigilantStack, new Object [] {"#", "x", 'x', runeStoneWardStack, '#', diamondChiselStack});
         GameRegistry.addRecipe(runeStoneToolStack, new Object [] {"x", "#", 'x', runeStoneWardStack, '#', zirconChiselStack});GameRegistry.addRecipe(runeStoneToolStack, new Object [] {"x", "#", 'x', runeStoneWardStack, '#', diamondChiselStack});
+        GameRegistry.addShapelessRecipe((runeStoneArmorStack), zirconChiselStack, runeStoneToolStack);GameRegistry.addShapelessRecipe((runeStoneArmorStack), diamondChiselStack, runeStoneToolStack);
         
         //Soulgems
         GameRegistry.addShapelessRecipe((elemCreeperGemStack), elemCreeperStack, mod_soulforge.soulGemLarge);
